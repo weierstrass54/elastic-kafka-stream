@@ -1,0 +1,6 @@
+kafka:
+  bootstrap-servers: kafka1.opentech.local:9092,kafka2.opentech.local:9092,kafka3.opentech.local:9092
+  consumer:
+    group-id: kafka-test
+    auto-commit: true
+    commit-interval-ms: 1000

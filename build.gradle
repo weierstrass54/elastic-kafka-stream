@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+group 'ru.opentech'
+version '1.0.0'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    maven {
+        url('http://nexus.opentech.local/repository/maven-public/')
+    }
+    maven {
+        url('http://nexus.opentech.local/repository/maven-releases/')
+    }
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter:2.1.0.RELEASE",
+            "org.apache.kafka:kafka-clients:2.1.0",
+            "org.apache.kafka:kafka-streams:2.1.0",
+            "ch.qos.logback:logback-classic:1.2.3"
+    testCompile "junit:junit:4.12",
+            "org.springframework.boot:spring-boot-starter-test:2.1.0.RELEASE"
+}
