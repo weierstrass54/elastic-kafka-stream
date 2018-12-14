@@ -32,7 +32,7 @@ public class KafkaStreamFactory {
         this.properties.put( ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest" );
     }
 
-    public void startStream( Topology topology ) {
+    public KafkaStreams startStream( Topology topology ) {
         if( kafkaStreamThreadPool.isShutdown() ) {
             throw new IllegalStateException( "Потоки выключены!" );
         }
@@ -44,6 +44,7 @@ public class KafkaStreamFactory {
         streams.cleanUp();
         Future future = kafkaStreamThreadPool.submit( streams::start );
         streamPool.put( topology, new KafkaStreamTask( streams, future ) );
+        return streams;
     }
 
     public void stopStream( Topology topology ) {
